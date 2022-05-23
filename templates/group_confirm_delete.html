@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+    <div class="content-wrapper">
+        <div class="row page-title-header">
+            <form  method="post">{% csrf_token %}
+                <div class="form-group ro">
+                    <p>Are you sure you want to delete "{{ object }}"?</p>
+                    <input type="submit" value="Confirm">
+                </div>
+        
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

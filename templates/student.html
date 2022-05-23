@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">teacher List</h4>
+        <!-- <p class="card-description"> Add class <code>.table-hover</code> </p> -->
+        <table class="table table-hover" >
+            <thead>
+                <tr>
+                    <form  class="ml-auto search-form d-none d-md-block" action="search" >
+                        <th><input type="search" class="form-control" name="name" placeholder="Name"></th>
+                        <th><input type="search" class="form-control" name="surname" placeholder="Surname"></th>
+                        <th><input type="search" class="form-control" name="age" placeholder="Age"></th>
+                        <th><input type="search" class="form-control" name="group" placeholder="Group"></th>
+                        <th><input type="search" class="form-control"  name="address" placeholder="Address"></th>
+                        <th>
+                            <button class="form-control" type="submit">
+                                <div class="icon-holder">
+                                    <i class="bi bi-search"></i>
+                                </div>
+                            </button>
+                            
+                        </th>
+                    </form>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for itim in student_list %}
+                    <tr>
+                        <td> {{itim.name}}</td>
+                        <td> {{itim.surname}}</td>
+                        <td> {{itim.age}}</td>
+                        <td> {{itim.groups}}</td>
+                        <td> {{itim.region}} , {{itim.district}}</td>
+                        <td>
+                            <a style="float: right;"  href="/{{itim.id}}/update-student/">
+                                <div class="icon-holder">
+                                    <i class="bi bi-pencil"></i>
+                                </div>
+                            </a> 
+                        </td>
+                        <td> 
+                            <a style="float: right;" href="/{{itim.id}}/delete-student/">
+                                <div class="icon-holder">
+                                    <i class="bi bi-trash"></i>
+                                </div>
+                            </a> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/add-student/"><button class="btn btn-success" type="submit"> Add Student </button> </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock%}
